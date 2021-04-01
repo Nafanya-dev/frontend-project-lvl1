@@ -1,29 +1,27 @@
 /* eslint-disable eol-last */
-import readlineSync from 'readline-sync';
 import { getRandomInRange } from './random.js';
-import { greeting } from './cli.js';
+import {
+  greetingAndRememberName,
+  questionsAndAnswers,
+  completionAndCongratulations,
+} from './index.js';
 
 // eslint-disable-next-line import/prefer-default-export
 export const evenGame = () => {
+  const userName = greetingAndRememberName('Answer "yes" if the number is even, otherwise answer "no".');
+
   const isEven = (number) => (number % 2 === 0);
 
   const sayYesOrNo = (number) => (isEven(number) ? 'yes' : 'no');
 
-  const name = greeting();
-
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-
   for (let i = 0; i < 3; i += 1) {
-    const randomNumber = getRandomInRange(1, 100);
-    const answer = sayYesOrNo(randomNumber);
-
-    console.log(`Question: ${randomNumber}`);
-    const answerOfUser = readlineSync.question('Your answer: ');
-    if (answerOfUser !== answer) {
-      console.log(`${answerOfUser} is wrong answer ;(. Correct answer was ${answer}.
-    Let's try again, ${name}!`);
+    const question = getRandomInRange(1, 100);
+    const correctAnswer = sayYesOrNo(question);
+    const answerOfUser = questionsAndAnswers(question);
+    if (answerOfUser !== correctAnswer) {
+      console.log(`${answerOfUser} is wrong answer ;(. Correct answer was ${correctAnswer}.
+    Let's try again, ${userName}!`);
       return;
     }
-    console.log('Correct!');
-  } console.log(`Congratulations, ${name}!`);
+  } completionAndCongratulations(userName);
 };
