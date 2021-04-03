@@ -17,6 +17,5 @@ export const questionsAndAnswers = (question) => {
 };
 
 export const completionAndCongratulations = (name) => {
-  console.log('Correct!');
   console.log(`Congratulations, ${name}!`);
 };

@@ -23,5 +23,6 @@ export const evenGame = () => {
     Let's try again, ${userName}!`);
       return;
     }
+    console.log('Correct!');
   } completionAndCongratulations(userName);
 };
