@@ -15,9 +15,9 @@ export const gcdGame = () => {
     const secondRandomNumber = getRandomInRange(1, 100);
 
     const question = `${firstRandomNumber} ${secondRandomNumber}`;
-    const correctAnswer = gcd(firstRandomNumber, secondRandomNumber);
+    const correctAnswer = String(gcd(firstRandomNumber, secondRandomNumber));
 
-    const userAnswer = Number(questionsAndAnswers(question));
+    const userAnswer = questionsAndAnswers(question);
     if (userAnswer !== correctAnswer) {
       console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${correctAnswer}.
     Let's try again, ${userName}!`);
